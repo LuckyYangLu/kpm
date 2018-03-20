@@ -1,6 +1,8 @@
 var fs = require('fs');
+var os = require('os');
 var path = require('path');
 var config = require('./config');
+var limit = /windows/i.test(os.type()) ? '\\' : '/';
 
 function readFileList (rootPath, filesList) {
   try {
@@ -10,12 +12,16 @@ function readFileList (rootPath, filesList) {
   }
 
   files.map(function (itm, index) {
-    var stat = fs.statSync(`${rootPath}\\${itm}`);
+    try {
+      var stat = fs.statSync(`${rootPath}${limit}${itm}`);
+    } catch (err) {
+      return console.error('读取文件或目录失败！');
+    }
 
     // 如果是目录
     if (stat.isDirectory()) {
       // 递归读取文件
-      readFileList(`${rootPath}\\${itm}\\`, filesList);
+      readFileList(`${rootPath}${limit}${itm}${limit}`, filesList);
     } else {  
       if (/\.js$/.test(itm)) {
         filesList['js'][itm.replace(/\.js$/, '')] = rootPath + itm;
