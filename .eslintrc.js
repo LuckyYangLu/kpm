@@ -35,8 +35,9 @@ module.exports = {
     'generator-star-spacing': 0,
     // 语句强制分号结尾
     "semi": [2, "always"],
-    // 关闭定义必须使用
-    "no-unused-vars": 1,
+    // 开启定义必须使用
+    "no-unused-vars": 0,
+    // 关闭react中的定义错误
     "react/jsx-uses-react": "error",
     "react/jsx-uses-vars": "error",
     // allow debugger during development

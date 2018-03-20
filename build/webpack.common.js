@@ -129,6 +129,4 @@ if (process.env.NODE_ENV === 'production') {
   commonConfig.plugins.push(new vConsolePlugin({enable: !!argv.debug}))
 }
 
-console.log(commonConfig.entry, commonConfig.plugins[1])
-
 module.exports = commonConfig;
