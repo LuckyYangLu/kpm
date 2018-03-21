@@ -3,6 +3,20 @@ var merge = require('webpack-merge');
 var config = require('./config');
 var common = require('./webpack.common.js');
 
+// 选择默认打开的页面
+if (common.entry.default) {
+  var _openPage = 'project/default/default.html';
+} else {
+  var _openPage = 'project/';
+  var entrys = Object.keys(common.entry);
+
+  if (entrys.indexOf('index') !== -1) {
+    _openPage += config.dev.project + '/index/index.html';
+  } else {
+    _openPage += `${config.dev.project}/${entrys[0]}/${entrys[0]}.html`;
+  }
+}
+
 module.exports = merge(common, {
   // 开启 source map,不可用于生产环境
   devtool: 'inline-source-map',
@@ -28,7 +42,7 @@ module.exports = merge(common, {
      */
     open: true,
     // 打开浏览器时的首页
-    openPage: common.entry.default ? 'project/default/default.html' : `project/${config.dev.project}/index/index.html`,
+    openPage: _openPage,
     /**
      * 当有编译器错误或警告时，在浏览器中全屏显示。默认禁用。
      */

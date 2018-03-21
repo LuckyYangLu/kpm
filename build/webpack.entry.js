@@ -24,10 +24,10 @@ function readFileList (rootPath, filesList) {
       readFileList(`${rootPath}${limit}${itm}${limit}`, filesList);
     } else {  
       if (/\.js$/.test(itm)) {
-        filesList['js'][itm.replace(/\.js$/, '')] = rootPath + itm;
+        filesList['js'][itm.replace(/\.js$/, '')] = rootPath + limit + itm;
       }
       if (/\.(html|htm)$/.test(itm)) {
-        filesList['html'][itm.replace(/\.(html|htm)$/, '')] = rootPath + itm;
+        filesList['html'][itm.replace(/\.(html|htm)$/, '')] = rootPath + limit + itm;
       }
     }
   })
@@ -46,5 +46,5 @@ function getFileList (rootPath) {
 }
 
 module.exports = {
-  file: getFileList(path.resolve(__dirname, `../src/project/${config.dev.project}/`))
+  file: getFileList(path.resolve(__dirname, `../src/project/${config.dev.project}`))
 }

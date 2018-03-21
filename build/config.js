@@ -14,7 +14,7 @@ module.exports = {
   dev: {
     port: 80,
     autoOpenBrowser: true,
-    project: 'ydzy',               // 项目名,需要开发的项目名,不可配置\
+    project: 'share',               // 项目名,需要开发的项目名,不可配置\
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {},

@@ -1,6 +1,7 @@
 var path = require('path');
 var utils = require('./utils');
 var config = require('./config');
+var webpack = require('webpack');
 var entrys = require('./webpack.entry');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -20,6 +21,8 @@ if (Object.keys(entrys.file.js).length === 0) {
   entrys.file.html['default'] = path.resolve(__dirname, '../src/project/default/default.html');
 }
 
+// entrys.file.js['common'] = [require('react'), require('react-dom')];
+
 var commonConfig = {
   entry: entrys.file.js,
   output: {
@@ -35,7 +38,16 @@ var commonConfig = {
       verbose: true,                         // 开启在控制台输出
       dry: false,                            // 是否删除文件
       exclude: []                            // 排除不删除的目录
-    })
+    }),
+    /* common 业务公共代码，vendor引入第三方 */
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   name: ['common'],
+    // }),
+    // /* 防止 vendor hash 变化 */
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   name: 'manifest',
+    //   chunks: []
+    // })
   ],
   module: {
     rules: [
