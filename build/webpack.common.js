@@ -126,7 +126,7 @@ var commonConfig = {
 Object.keys(entrys.file.html).forEach(item => {
   commonConfig.plugins.push(
     new HtmlWebpackPlugin({
-      filename: path.resolve(__dirname, commonConfig.entry.default ? '../dist/project/default/default.html' : `../dist/project/${config.dev.project}/${item}/${item}.html`),
+      filename: commonConfig.entry.default ? '../dist/project/default/default.html' : entrys.file.html[item].replace('src', 'dist'),
       template: entrys.file.html[item],
       chunks: [item],
       inject: true,

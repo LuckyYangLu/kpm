@@ -20,8 +20,10 @@ function readFileList (rootPath, filesList) {
 
     // 如果是目录
     if (stat.isDirectory()) {
-      // 递归读取文件
-      readFileList(`${rootPath}${limit}${itm}${limit}`, filesList);
+      if (!/common/i.test(itm)) {
+        // 递归读取文件
+        readFileList(`${rootPath}${limit}${itm}${limit}`, filesList);
+      }
     } else {  
       if (/\.js$/.test(itm)) {
         filesList['js'][itm.replace(/\.js$/, '')] = rootPath + limit + itm;
