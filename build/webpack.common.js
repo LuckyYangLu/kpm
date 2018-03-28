@@ -15,13 +15,12 @@ function resolve (dir) {
   return path.join(__dirname, '..', dir);
 }
 
+// entry 参数缺失，使用默认入口
 if (Object.keys(entrys.file.js).length === 0) {
   console.error('entry 参数缺失,使用默认入口！');
   entrys.file.js['default'] = path.resolve(__dirname, '../src/project/default/default.js');
   entrys.file.html['default'] = path.resolve(__dirname, '../src/project/default/default.html');
 }
-
-// entrys.file.js['common'] = [require('react'), require('react-dom')];
 
 var commonConfig = {
   entry: entrys.file.js,
@@ -32,28 +31,25 @@ var commonConfig = {
       ? config.build.assetsPublicPath
       : config.dev.assetsPublicPath
   },
+  resolve: {
+    extensions: ['.js', '.jsx', '.json'],
+    alias: {
+      '@': resolve('src')
+    }
+  },
   plugins: [
     new CleanWebpackPlugin(['dist'], {
       root: path.resolve(__dirname, '../'),  // 根目录
       verbose: true,                         // 开启在控制台输出
       dry: false,                            // 是否删除文件
       exclude: []                            // 排除不删除的目录
-    }),
-    /* common 业务公共代码，vendor引入第三方 */
-    // new webpack.optimize.CommonsChunkPlugin({
-    //   name: ['common'],
-    // }),
-    // /* 防止 vendor hash 变化 */
-    // new webpack.optimize.CommonsChunkPlugin({
-    //   name: 'manifest',
-    //   chunks: []
-    // })
+    })
   ],
   module: {
     rules: [
       {
         test: /\.(html|htm)$/i,
-        loader: 'html-withimg-loader',
+        loader: 'html-loader',
         options: {
           attrs: [':data-src']
         }
@@ -87,7 +83,7 @@ var commonConfig = {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
         options: {
-          limit: 1000,
+          limit: 10000,
           name: utils.assetsPath('img/[name].[hash:7].[ext]')
         }
       },
@@ -128,8 +124,16 @@ Object.keys(entrys.file.html).forEach(item => {
     new HtmlWebpackPlugin({
       filename: commonConfig.entry.default ? '../dist/project/default/default.html' : entrys.file.html[item].replace('src', 'dist'),
       template: entrys.file.html[item],
-      chunks: [item],
-      inject: true,
+      chunks: ['manifest', 'vendor', item],  // 引入的模块
+      excludeChunks: [],                     // 排除的模块
+      showErrors: true,              // 是否将错误信息写在页面中,默认true.出错信息被 pre 标签包裹并添加在页面上
+      inject: true,                  // 静态资源在body后插入 
+      minify: {
+        caseSensitive: false,        // 是否大小写敏感
+        removeComments: true,        // 去除注释
+        collapseWhitespace: true,    // 去除空格
+        removeAttributeQuotes: true  // 去除空属性
+      },
       hash: true
     })
   );

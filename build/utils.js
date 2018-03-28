@@ -5,8 +5,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 exports.assetsPath = function (_path) {
   var assetsSubDirectory = process.env.NODE_ENV === 'production'
     ? config.build.assetsSubDirectory
-    : config.dev.assetsSubDirectory;
-
+    : config.dev.assetsSubDirectory
   return path.posix.join(assetsSubDirectory, _path)
 }
 
@@ -23,31 +22,26 @@ exports.cssLoaders = function (options) {
 
   // generate loader string to be used with extract text plugin
   function generateLoaders (loader, loaderOptions) {
-    var loaders = [cssLoader];
+    var loaders = [cssLoader]
     if (loader) {
       loaders.push({
         loader: loader + '-loader',
         options: Object.assign({}, loaderOptions, {
           sourceMap: options.sourceMap
         })
-      });
+      })
     }
 
-    return loaders;
-
-    // Extract CSS when that option is specified
-    // (which is the case during production build)
-    // if (options.extract) {
-    //   return ExtractTextPlugin.extract({
-    //     use: loaders,
-    //     fallback: 'vue-style-loader'
-    //   })
-    // } else {
-    //   return ['vue-style-loader'].concat(loaders)
-    // }
+    // 抽取样式为独立的css文件,避免将样式打入js文件中
+    if (options.extract) {
+      return ExtractTextPlugin.extract({
+        use: loaders
+      });
+    } else {
+      return loaders;
+    }
   }
 
-  // https://vue-loader.vuejs.org/en/configurations/extract-css.html
   return {
     css: generateLoaders(),
     postcss: generateLoaders(),
@@ -63,15 +57,13 @@ exports.cssLoaders = function (options) {
 exports.styleLoaders = function (options) {
   var output = [];
   var loaders = exports.cssLoaders(options);
-
   for (var extension in loaders) {
-    var loader = loaders[extension];
+    var loader = loaders[extension]
     output.push({
       test: new RegExp('\\.' + extension + '$'),
       use: loader
     });
   }
 
-  console.log('完整的loader', output[0].use)
   return output;
 }

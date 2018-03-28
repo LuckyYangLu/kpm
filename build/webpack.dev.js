@@ -7,14 +7,15 @@ var common = require('./webpack.common.js');
 if (common.entry.default) {
   var _openPage = 'project/default/default.html';
 } else {
-  var _openPage = 'project/';
   var entrys = Object.keys(common.entry);
 
   if (entrys.indexOf('index') !== -1) {
-    _openPage += config.dev.project + '/index/index.html';
+    var _pageStr = common.entry['index'];
   } else {
-    _openPage += `${config.dev.project}/${entrys[0]}/${entrys[0]}.html`;
+    var _pageStr = common.entry[entrys[0]];
   }
+
+  var _openPage = _pageStr.slice(_pageStr.indexOf('project')).replace(/\.js$/, '.html');
 }
 
 module.exports = merge(common, {
@@ -30,7 +31,11 @@ module.exports = merge(common, {
   // 插件
   plugins: [
     // 模块热替换
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    // 生产环境下的全局常量
+    new webpack.DefinePlugin({
+      'process.env': config.dev.env
+    })
   ],
   // 开发服务器
   devServer: {
