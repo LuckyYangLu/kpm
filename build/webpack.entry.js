@@ -34,7 +34,6 @@ function readFileList (rootPath, filesList) {
     }
   })
 }
-  
 // 获取文件夹下的所有文件
 function getFileList (rootPath) {
   var filesList = {
@@ -49,4 +48,4 @@ function getFileList (rootPath) {
 
 module.exports = {
   file: getFileList(path.resolve(__dirname, `../src/project/${config.dev.project}`))
-}
+};

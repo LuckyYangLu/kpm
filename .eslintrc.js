@@ -27,7 +27,7 @@ module.exports = {
   ],
   plugins: ['html', 'react'],
   // 自定义规则
-  'rules': {
+  rules: {
     // allow paren-less arrow functions
     'arrow-parens': 0,
     // allow async-await
@@ -40,6 +40,7 @@ module.exports = {
     // 关闭react中的定义错误
     "react/jsx-uses-react": "error",
     "react/jsx-uses-vars": "error",
+    'react/no-find-dom-node': 'error',
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
   }

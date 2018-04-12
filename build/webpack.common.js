@@ -1,9 +1,7 @@
 var path = require('path');
 var utils = require('./utils');
 var config = require('./config');
-var webpack = require('webpack');
 var entrys = require('./webpack.entry');
-var CleanWebpackPlugin = require('clean-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 // 接收运行参数
@@ -18,6 +16,7 @@ function resolve (dir) {
 // entry 参数缺失，使用默认入口
 if (Object.keys(entrys.file.js).length === 0) {
   console.error('entry 参数缺失,使用默认入口！');
+
   entrys.file.js['default'] = path.resolve(__dirname, '../src/project/default/default.js');
   entrys.file.html['default'] = path.resolve(__dirname, '../src/project/default/default.html');
 }
@@ -37,14 +36,7 @@ var commonConfig = {
       '@': resolve('src')
     }
   },
-  plugins: [
-    new CleanWebpackPlugin(['dist'], {
-      root: path.resolve(__dirname, '../'),  // 根目录
-      verbose: true,                         // 开启在控制台输出
-      dry: false,                            // 是否删除文件
-      exclude: []                            // 排除不删除的目录
-    })
-  ],
+  plugins: [],
   module: {
     rules: [
       {
@@ -140,9 +132,9 @@ Object.keys(entrys.file.html).forEach(item => {
 });
 
 // 生产环境下开启 vconsole
-if (process.env.NODE_ENV === 'production') {
-  var vConsolePlugin = require('vconsole-webpack-plugin');
-  commonConfig.plugins.push(new vConsolePlugin({enable: !!argv.debug}))
-}
+// if (process.env.NODE_ENV === 'production') {
+//   var vConsolePlugin = require('vconsole-webpack-plugin');
+//   commonConfig.plugins.push(new vConsolePlugin({enable: !!argv.debug}));
+// }
 
 module.exports = commonConfig;

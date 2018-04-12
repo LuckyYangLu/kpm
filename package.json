@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "webpack --config build/webpack.entry.js --color",
-    "start": "webpack-dev-server --debug --config build/webpack.dev.js --color",
-    "build": "webpack --config build/webpack.prod.js --progress --color"
+    "server": "node ../ApiServer/bin/www",
+    "start": "webpack-dev-server --config build/webpack.dev.js --color --progress",
+    "build": "node build/build.js"
   },
   "keywords": [],
   "author": "",
@@ -22,6 +23,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-react-hmre": "^1.1.1",
     "babel-preset-stage-2": "^6.24.1",
+    "chalk": "^2.3.2",
     "clean-webpack-plugin": "^0.1.17",
     "css-loader": "^0.28.9",
     "csv-loader": "^2.1.1",
@@ -38,25 +40,32 @@
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^2.30.1",
     "html-withimg-loader": "^0.1.16",
+    "http-proxy-middleware": "^0.18.0",
     "image-webpack-loader": "^3.4.2",
     "lodash": "^4.17.4",
     "optimize-css-assets-webpack-plugin": "^4.0.0",
+    "ora": "^2.0.0",
+    "rimraf": "^2.6.2",
     "sass-loader": "^6.0.7",
     "style-loader": "^0.19.1",
     "url-loader": "^0.6.2",
     "vconsole-webpack-plugin": "^1.1.3",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.11.1",
+    "webpack-hot-middleware": "^2.22.0",
     "webpack-merge": "^4.1.1",
     "xml-loader": "^1.2.1"
   },
   "dependencies": {
     "antd": "^3.3.1",
     "antd-mobile": "^2.1.8",
+    "async": "^2.6.0",
     "axios": "^0.18.0",
     "moment": "^2.21.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
     "react-sticky": "^6.0.1"
   }
 }

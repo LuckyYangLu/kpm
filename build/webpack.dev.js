@@ -2,20 +2,24 @@ var webpack = require('webpack');
 var merge = require('webpack-merge');
 var config = require('./config');
 var common = require('./webpack.common.js');
+var _openPage;
+
+process.env.NODE_ENV === 'development';
 
 // 选择默认打开的页面
 if (common.entry.default) {
-  var _openPage = 'project/default/default.html';
+  _openPage = 'project/default/default.html';
 } else {
   var entrys = Object.keys(common.entry);
+  var _pageStr;
 
   if (entrys.indexOf('index') !== -1) {
-    var _pageStr = common.entry['index'];
+    _pageStr = common.entry['index'];
   } else {
-    var _pageStr = common.entry[entrys[0]];
+    _pageStr = common.entry[entrys[0]];
   }
 
-  var _openPage = _pageStr.slice(_pageStr.indexOf('project')).replace(/\.js$/, '.html');
+  _openPage = _pageStr.slice(_pageStr.indexOf('project')).replace(/\.js$/, '.html');
 }
 
 module.exports = merge(common, {
