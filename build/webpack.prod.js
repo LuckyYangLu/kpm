@@ -10,7 +10,7 @@ var HTMLWebpackPlugin = require('html-webpack-plugin');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
-
+var MomentLocalesPlugin = require('moment-locales-webpack-plugin');    // moment 插件处理器
 
 var prod = merge(common, {
   output: {
@@ -71,6 +71,13 @@ var prod = merge(common, {
     new webpack.optimize.CommonsChunkPlugin({
       name: 'manifest',
       chunks: ['vendor']
+    }),
+    /**
+     * 打包时,删除 moment.js 中未使用到的部分,减少体积
+     */
+    new MomentLocalesPlugin(),
+    new MomentLocalesPlugin({
+      localesToKeep: ['es-us', 'ru'],
     })
   ]
 });

@@ -3,11 +3,7 @@ var utils = require('./utils');
 var config = require('./config');
 var entrys = require('./webpack.entry');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-
-// 接收运行参数
-var argv = require('yargs')
-  .describe('debug', 'debug 环境')
-  .argv;
+var vConsolePlugin = require('vconsole-webpack-plugin');
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir);
@@ -36,7 +32,9 @@ var commonConfig = {
       '@': resolve('src')
     }
   },
-  plugins: [],
+  plugins: [
+    new vConsolePlugin({enable: false})
+  ],
   module: {
     rules: [
       {
@@ -130,11 +128,5 @@ Object.keys(entrys.file.html).forEach(item => {
     })
   );
 });
-
-// 生产环境下开启 vconsole
-// if (process.env.NODE_ENV === 'production') {
-//   var vConsolePlugin = require('vconsole-webpack-plugin');
-//   commonConfig.plugins.push(new vConsolePlugin({enable: !!argv.debug}));
-// }
 
 module.exports = commonConfig;

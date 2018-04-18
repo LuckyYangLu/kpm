@@ -16,7 +16,7 @@ module.exports = {
     env: require('./dev.env'),
     port: 80,
     autoOpenBrowser: true,
-    project: 'share',               // 项目名,需要开发的项目名,不可配置\
+    project: 'lhb',               // 项目名,需要开发的项目名,不可配置\
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {},
