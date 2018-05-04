@@ -6,7 +6,7 @@ module.exports = {
     index: path.resolve(__dirname, '../dist/index.html'),
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/ydzy/myShare/',
+    assetsPublicPath: '/ydzy/lhb/',
     productionSourceMap: false,
     productionGzip: false,
     productionGzipExtensions: ['js', 'css'],
@@ -16,7 +16,7 @@ module.exports = {
     env: require('./dev.env'),
     port: 80,
     autoOpenBrowser: true,
-    project: 'lhb',               // 项目名,需要开发的项目名,不可配置\
+    project: 'ICBC',               // 项目名,需要开发的项目名,不可配置\
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {},

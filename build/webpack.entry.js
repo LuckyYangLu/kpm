@@ -20,13 +20,14 @@ function readFileList (rootPath, filesList) {
 
     // 如果是目录
     if (stat.isDirectory()) {
-      if (!/common/i.test(itm)) {
+      if (!/component/i.test(itm)) {
         // 递归读取文件
         readFileList(`${rootPath}${limit}${itm}${limit}`, filesList);
       }
     } else {  
       if (/\.js$/.test(itm)) {
         filesList['js'][itm.replace(/\.js$/, '')] = rootPath + limit + itm;
+        // filesList['js'].push(rootPath + limit + itm);
       }
       if (/\.(html|htm)$/.test(itm)) {
         filesList['html'][itm.replace(/\.(html|htm)$/, '')] = rootPath + limit + itm;

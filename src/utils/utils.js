@@ -1,8 +1,6 @@
 /**
  * 工具类
  */
-// import crypto from 'crypto'
-// import fs from 'fs'
 
 // 从数据中获取需要的参数，默认获取_id
 export function Selection (data, params) {
@@ -80,4 +78,50 @@ export function isObjEmpty (obj) {
     return true;
   }
   return true;
+}
+
+/**
+ * 通过传入的时间计算年月日和季度
+ * @param {Date} time 传入的时间
+ */
+export function calcYearMonthDay (time) {
+  const today = time ? new Date(time) : new Date();
+  const _year = today.getFullYear();
+  const _month = today.getMonth() + 1;
+  const _quarter = parseInt(_month / 4) + 1;
+  const _day = today.getDate();
+  const _formatToday = `${_year}/${_month < 10 ? '0' + _month : _month}/${_day < 10 ? '0' + _day : _day}`;
+
+  return {
+    year: _year,
+    month: _month,
+    quarter: _quarter,
+    day: _day,
+    format: _formatToday
+  };
+}
+
+/**
+ * 数字处理
+ * @param {Number} number 需要处理的数字
+ * @param {Number} max 数字允许的最大值
+ */
+export function largeNumber (number, max) {
+  if (number > max) {
+    return max;
+  } else {
+    return number;
+  }
+}
+
+/**
+ * 过滤字符串,清除左右空格、特殊字符、emoji表情
+ * @param {String} str 字符串
+ */
+export function stringFilter (str) {
+  str = str.replace(/(^\s*)|(\s*$)/g, '');  // 清除左右空格
+  str = str.replace(/\uD83C[\uDF00-\uDFFF]|\uD83D[\uDC00-\uDE4F]/g, '');         // 清除emoji表情符号
+  str = str.replace(/[\-\_\,\!\|\\\/\~\`\(\)\#\$\%\^\&\*\{\}\:\;\"\L\<\>\?]/g, '');  // 清除特殊字符
+
+  return str;
 }

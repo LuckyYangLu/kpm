@@ -17,6 +17,8 @@ if (Object.keys(entrys.file.js).length === 0) {
   entrys.file.html['default'] = path.resolve(__dirname, '../src/project/default/default.html');
 }
 
+entrys.file.js['polyfille'] = 'babel-polyfill';
+
 var commonConfig = {
   entry: entrys.file.js,
   output: {
@@ -27,7 +29,7 @@ var commonConfig = {
       : config.dev.assetsPublicPath
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.json'],
+    extensions: ['.js', '.less', '.jsx', '.json'],
     alias: {
       '@': resolve('src')
     }
@@ -68,6 +70,11 @@ var commonConfig = {
         query: {
           presets: ['react']
         }
+      },
+      {
+        test: /\.(less)$/,
+        exclude: /node_modules/,
+        loader: "style-loader!css-loader?sourceMap!less-loader?sourceMap"
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

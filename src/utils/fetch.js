@@ -1,42 +1,46 @@
 import axios from 'axios';
+import axiosConfig from '@/config/axios.config';
 
-axios.defaults.withCredentials = true;
+var wxRequest = function (url, data, method) {
+  return new Promise((resolve, reject) => {
+    data = data || {};
 
-// 创建axios实例
-const Axios = axios.create({
-  baseURL: process.env.BASE_API,     // baseUrl
-  timeout: 60000                     // 超时时间
-});
+    function fetch (sucFun, errFun) {
+      console.log('===== 数据请求开始 =====');
 
-// request拦截器
-Axios.interceptors.request.use(config => {
-  return config;
-}, error => {
-  Promise.reject(error);
-});
-
-// respone拦截器
-Axios.interceptors.response.use(
-  response => {
-    if (response.data.status === 1) {
-      return Promise.resolve(response.data);
-    } else {
-      return Promise.reject(response.data);
+      axios(Object.assign(axiosConfig, {
+        url: url,
+        data: data,
+        method: method,
+        transformRequest: [
+          function (data) {
+            let ret = '';
+            for (let it in data) {
+              ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&';
+            }
+            return ret;
+          }
+        ]
+      })).then((response) => {
+        console.log('===== 数据请求成功 =====');
+        if (response.data.status === 1) {
+          resolve(response.data);
+        } else {
+          console.log('===== 数据请求失败 =====', response);
+          reject(response.data);
+        }
+      }, (error) => {
+        error.message = '网络错误';
+        reject(error);
+      });
     }
-  },
-  error => {
-    console.error('ERROR：', error);
 
-    if (error.response) {
-      switch (error.response.status) {
-        case 401:
-          // 无权限
-          break;
-      }
-    }
+    fetch((res) => {
+      resolve(res);
+    }, (err) => {
+      reject(err);
+    });
+  });
+};
 
-    return Promise.reject(error);
-  }
-);
-
-export default Axios;
+export default wxRequest;
