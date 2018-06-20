@@ -1,6 +1,13 @@
 {
   "presets": ["react", "es2015", "stage-2"],
-  "env": {},
+  "env": {
+    "development": {
+      "presets": ["react-hmre"]
+    },
+    "production": {
+      "plugins": ["transform-react-remove-prop-types"]
+    }
+  },
   "plugins": [
     ["import", { "libraryName": "antd", "libraryDirectory": "es", "style": "css" }],
     ["transform-imports", {

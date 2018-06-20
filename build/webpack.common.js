@@ -3,7 +3,7 @@ var utils = require('./utils');
 var config = require('./config');
 var entrys = require('./webpack.entry');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var vConsolePlugin = require('vconsole-webpack-plugin');
+var vueLoaderConfig = require('./vue-loader.conf');
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir);
@@ -18,6 +18,8 @@ if (Object.keys(entrys.file.js).length === 0) {
 }
 
 entrys.file.js['polyfille'] = 'babel-polyfill';
+// entrys.file.js['react'] = ['react', 'react-dom'];
+// entrys.file.js['antd'] = ['antd-mobile'];
 
 var commonConfig = {
   entry: entrys.file.js,
@@ -34,25 +36,28 @@ var commonConfig = {
       '@': resolve('src')
     }
   },
-  plugins: [
-    new vConsolePlugin({enable: false})
-  ],
+  plugins: [],
   module: {
     rules: [
       {
         test: /\.(html|htm)$/i,
-        loader: 'html-loader',
-        options: {
-          attrs: [':data-src']
-        }
+        use: [
+          {
+            loader: 'html-loader',
+            options: {
+              attrs: [':data-src']
+            }
+          }
+        ]
       },
       {
-        test : /\.js$/,
+        test: /\.(js|vue)$/,
         loader: 'eslint-loader',
         enforce: 'pre',
-        include: [resolve('src')],
+        include: [resolve('src'), resolve('test')],
         options: {
-          formatter: require('eslint-friendly-formatter')
+          formatter: require('eslint-friendly-formatter'),
+          emitWarning: !config.dev.showEslintErrorsInOverlay
         }
       },
       {
@@ -63,6 +68,7 @@ var commonConfig = {
           presets: ['react', 'es2015']
         },
       },
+      // react组件的处理
       {
         test: /\.jsx$/,
         exclude: /node_modules/,
@@ -71,10 +77,11 @@ var commonConfig = {
           presets: ['react']
         }
       },
+      // vue组件的处理
       {
-        test: /\.(less)$/,
-        exclude: /node_modules/,
-        loader: "style-loader!css-loader?sourceMap!less-loader?sourceMap"
+        test: /\.vue$/,
+        loader: 'vue-loader',
+        options: vueLoaderConfig
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -88,7 +95,7 @@ var commonConfig = {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
         loader: 'url-loader',
         options: {
-          // limit: 10000,
+          limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
       },
@@ -125,6 +132,7 @@ Object.keys(entrys.file.html).forEach(item => {
       excludeChunks: [],                     // 排除的模块
       showErrors: true,              // 是否将错误信息写在页面中,默认true.出错信息被 pre 标签包裹并添加在页面上
       inject: true,                  // 静态资源在body后插入 
+      favicon: path.resolve(__dirname, '../src/assets/favicon.ico'),
       minify: {
         caseSensitive: false,        // 是否大小写敏感
         removeComments: true,        // 去除注释

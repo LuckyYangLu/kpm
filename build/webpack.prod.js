@@ -21,7 +21,8 @@ var prod = merge(common, {
   module: {
     rules: utils.styleLoaders({
       sourceMap: config.build.productionSourceMap,
-      extract: true
+      extract: true, // 独立css
+      usePostCSS: true // 开启postCss
     })
   },
   /*
@@ -45,7 +46,7 @@ var prod = merge(common, {
       compress: {
         warnings: false,       // 删除无用代码时关闭警告
         drop_debugger: true,   // 删除 debugger
-        drop_console: true     // 删除 console 日志输出
+        drop_console: !config.build.vconsole // 删除 console 日志输出
       },
       sourceMap: true          // 开启 source-map
     }),

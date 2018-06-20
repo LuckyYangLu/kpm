@@ -12,6 +12,13 @@ exports.assetsPath = function (_path) {
 exports.cssLoaders = function (options) {
   options = options || {};
 
+  var styleLoader = {
+    loader: 'style-loader',
+    options: {
+      sourceMap: options.sourceMap
+    }
+  };
+
   var cssLoader = {
     loader: 'css-loader',
     options: {
@@ -20,9 +27,26 @@ exports.cssLoaders = function (options) {
     }
   };
 
+  var postcssLoader = {
+    loader: 'postcss-loader',
+    options: {
+      // sourceMap: options.sourceMap,
+      // parser: '', // postcss分析器
+      // exec: true, // 使postcss解析器支持CSS-in-JS
+      // path: 'postcss.config.js',
+      // cssnext: true,
+      // autoprefixer: true
+    }
+  }
+
   // generate loader string to be used with extract text plugin
   function generateLoaders (loader, loaderOptions) {
     var loaders = [cssLoader];
+
+    // 开发环境下css需要style-loader处理
+    process.env.NODE_ENV === 'development' && loaders.unshift(styleLoader);
+    options.usePostCSS ? loaders.push(postcssLoader) : '';
+
     if (loader) {
       loaders.push({
         loader: loader + '-loader',
@@ -57,6 +81,7 @@ exports.cssLoaders = function (options) {
 exports.styleLoaders = function (options) {
   var output = [];
   var loaders = exports.cssLoaders(options);
+
   for (var extension in loaders) {
     var loader = loaders[extension];
     output.push({

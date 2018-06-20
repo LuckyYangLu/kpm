@@ -1,10 +1,13 @@
+// 设置为开发环境
+process.env.NODE_ENV = 'development';
+
 var webpack = require('webpack');
 var merge = require('webpack-merge');
+var utils = require('./utils');
 var config = require('./config');
 var common = require('./webpack.common.js');
-var _openPage;
 
-process.env.NODE_ENV === 'development';
+var _openPage;
 
 // 选择默认打开的页面
 if (common.entry.default) {
@@ -22,21 +25,17 @@ if (common.entry.default) {
   _openPage = _pageStr.slice(_pageStr.indexOf('project')).replace(/\.js$/, '.html');
 }
 
-module.exports = merge(common, {
+var webpackDevConfig = merge(common, {
   // 开启 source map,不可用于生产环境
   devtool: 'inline-source-map',
   module: {
-    rules: [
-      {
-        test: /\.css$/, use: ['style-loader',  'css-loader']
-      }
-    ]
+    rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap, usePostCSS: true })
   },
   // 插件
   plugins: [
     // 模块热替换
     new webpack.HotModuleReplacementPlugin(),
-    // 生产环境下的全局常量
+    // 开发环境下的全局常量
     new webpack.DefinePlugin({
       'process.env': config.dev.env
     })
@@ -80,3 +79,5 @@ module.exports = merge(common, {
     proxy: config.dev.proxyTable
   }
 });
+
+module.exports = webpackDevConfig;
