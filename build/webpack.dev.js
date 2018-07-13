@@ -1,6 +1,3 @@
-// 设置为开发环境
-process.env.NODE_ENV = 'development';
-
 var webpack = require('webpack');
 var merge = require('webpack-merge');
 var utils = require('./utils');
@@ -26,10 +23,34 @@ if (common.entry.default) {
 }
 
 var webpackDevConfig = merge(common, {
+  mode: 'development',
   // 开启 source map,不可用于生产环境
   devtool: 'inline-source-map',
   module: {
-    rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap, usePostCSS: true })
+    // rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap, usePostCSS: true })
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          {loader: 'style-loader'},
+          {loader: 'css-loader'}
+        ]
+      },
+      {
+        test: /\.less$/,
+        use: [
+          {loader: 'style-loader'},
+          {loader: 'css-loader'},
+          {
+            loader: 'less-loader',
+            options: {
+              strictMath: true,
+              noIeCompat: true
+            }
+          }
+        ]
+      }
+    ]
   },
   // 插件
   plugins: [

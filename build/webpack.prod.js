@@ -1,18 +1,16 @@
-process.env.NODE_ENV === 'production';
-
 var webpack = require('webpack');
 var path = require('path');
 var utils = require('./utils');
 var config = require('./config');
 var merge = require('webpack-merge');
 var common = require('./webpack.common.js');
-var HTMLWebpackPlugin = require('html-webpack-plugin');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
+var uglifyjsPlugin = require('uglifyjs-webpack-plugin');
 var MomentLocalesPlugin = require('moment-locales-webpack-plugin');    // moment 插件处理器
 
 var prod = merge(common, {
+  mode: 'production',
   output: {
     path: config.build.assetsRoot,
     filename: utils.assetsPath('js/[name].[chunkhash].js'),
@@ -31,47 +29,16 @@ var prod = merge(common, {
    */
   devtool: config.build.productionSourceMap ? '#source-map' : false,
   plugins: [
-    // 配置生产环境下的全局常量
-    new webpack.DefinePlugin({
-      'process.env': config.build.env
-    }),
     new CleanWebpackPlugin(['dist'], {
       root: path.resolve(__dirname, '../'),  // 根目录
       verbose: true,                         // 开启在控制台输出
       dry: false,                            // 是否删除文件
       exclude: []                            // 排除不删除的目录
     }),
-    // js 代码的处理，压缩、美化等
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false,       // 删除无用代码时关闭警告
-        drop_debugger: true,   // 删除 debugger
-        drop_console: !config.build.vconsole // 删除 console 日志输出
-      },
-      sourceMap: true          // 开启 source-map
-    }),
     // 便于查看代码之间的依赖
     new webpack.NamedModulesPlugin(),
     new ExtractTextPlugin({
       filename: utils.assetsPath('css/[name].[hash:7].css')
-    }),
-    // 抽取公共模块为 vendor.js
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      minChunks: function (module, count) {
-        return (
-          module.resource &&
-          /\.js$/.test(module.resource) &&
-          module.resource.indexOf(
-            path.join(__dirname, '../node_modules')
-          ) === 0
-        );
-      }
-    }),
-    // 配置抽取出的公共模块在webpack中的入口,入口文件在 manifest.js
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'manifest',
-      chunks: ['vendor']
     }),
     /**
      * 打包时,删除 moment.js 中未使用到的部分,减少体积
@@ -80,7 +47,32 @@ var prod = merge(common, {
     new MomentLocalesPlugin({
       localesToKeep: ['es-us', 'ru'],
     })
-  ]
+  ],
+  optimization: {
+    minimizer: [
+      // 压缩js
+      new uglifyjsPlugin({
+        uglifyOptions: {
+          compress: false
+        }
+      })
+    ],
+    splitChunks: {
+      chunks: "async",
+      minSize: 30000,
+      minChunks: 1,
+      maxAsyncRequests: 5,
+      maxInitialRequests: 3,
+      name: true,
+      cacheGroups: {
+        commons: {
+          name: "vendor",
+          chunks: "initial",
+          minChunks: 2
+       }
+      }
+    }
+  },
 });
 
 module.exports = prod;

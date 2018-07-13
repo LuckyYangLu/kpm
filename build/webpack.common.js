@@ -50,31 +50,39 @@ var commonConfig = {
           }
         ]
       },
-      {
-        test: /\.(js|vue)$/,
-        loader: 'eslint-loader',
-        enforce: 'pre',
-        include: [resolve('src'), resolve('test')],
-        options: {
-          formatter: require('eslint-friendly-formatter'),
-          emitWarning: !config.dev.showEslintErrorsInOverlay
-        }
-      },
+      // {
+      //   test: /\.(js|vue)$/,
+      //   loader: 'eslint-loader',
+      //   enforce: 'pre',
+      //   include: [resolve('src'), resolve('test')],
+      //   options: {
+      //     formatter: require('eslint-friendly-formatter'),
+      //     emitWarning: !config.dev.showEslintErrorsInOverlay
+      //   }
+      // },
       {
         test : /\.js$/,
-        loader: 'babel-loader',
         exclude: /node_modules/,
-        query: {
-          presets: ['react', 'es2015']
-        },
+        // include: [
+        //   path.resolve(__dirname, 'node_modules/webpack-dev-server')
+        // ],
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['env', 'es2015']
+          }
+        }
       },
       // react组件的处理
       {
         test: /\.jsx$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
-        query: {
-          presets: ['react']
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['env', 'react', 'es2015'],
+            plugins: ['transform-runtime']
+          }
         }
       },
       // vue组件的处理
@@ -87,7 +95,7 @@ var commonConfig = {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
         options: {
-          limit: 10000,
+          limit: 2048,
           name: utils.assetsPath('img/[name].[hash:7].[ext]')
         }
       },
@@ -95,7 +103,7 @@ var commonConfig = {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
         loader: 'url-loader',
         options: {
-          limit: 10000,
+          limit: 2048,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
       },

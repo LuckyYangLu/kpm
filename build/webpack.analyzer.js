@@ -2,7 +2,6 @@
  * 分析框架和项目中间件及源码组成情况
  */
 
-var webpack = require('webpack');
 var merge = require('webpack-merge');
 var utils = require('./utils');
 var config = require('./config');

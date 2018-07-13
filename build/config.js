@@ -1,5 +1,5 @@
 var path = require('path');
-var _project = 'map'; // 项目名
+var _project = 'AccountTracking'; // 项目名
 
 module.exports = {
   build: {
@@ -7,7 +7,7 @@ module.exports = {
     index: path.resolve(__dirname, '../dist/index.html'),
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '../../', // 打包后的静态资源根路径
+    assetsPublicPath: '/oa-jy/healthyConduct/', // 打包后的静态资源根路径
     productionSourceMap: false,
     productionGzip: true,
     productionGzipExtensions: ['js', 'css'],

@@ -44,7 +44,8 @@ exports.cssLoaders = function (options) {
     var loaders = [cssLoader];
 
     // 开发环境下css需要style-loader处理
-    process.env.NODE_ENV === 'development' && loaders.unshift(styleLoader);
+    // process.env.NODE_ENV === 'development' && loaders.unshift(styleLoader);
+    // loader.unshift(styleLoader);
     options.usePostCSS ? loaders.push(postcssLoader) : '';
 
     if (loader) {
