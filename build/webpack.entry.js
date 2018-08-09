@@ -1,7 +1,7 @@
 var fs = require('fs');
 var os = require('os');
 var path = require('path');
-var config = require('./config');
+var config = require('../config');
 var limit = /windows/i.test(os.type()) ? '\\' : '/';
 
 function readFileList (rootPath, filesList) {
@@ -20,7 +20,7 @@ function readFileList (rootPath, filesList) {
 
     // 如果是目录
     if (stat.isDirectory()) {
-      if (!/(component|utils|plugin|config)/i.test(itm)) {
+      if (!/(component|fetch|router|store|utils|plugin|config)/i.test(itm)) {
         // 递归读取文件
         readFileList(`${rootPath}${limit}${itm}${limit}`, filesList);
       }
