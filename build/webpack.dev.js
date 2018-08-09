@@ -1,7 +1,7 @@
 var webpack = require('webpack');
 var merge = require('webpack-merge');
-var utils = require('./utils');
-var config = require('./config');
+var config = require('../config');
+var entrys = require('./webpack.entry');
 var common = require('./webpack.common.js');
 
 var _openPage;
@@ -10,16 +10,15 @@ var _openPage;
 if (common.entry.default) {
   _openPage = 'project/default/default.html';
 } else {
-  var entrys = Object.keys(common.entry);
-  var _pageStr;
+  let _pageStr = '';
 
-  if (entrys.indexOf('index') !== -1) {
-    _pageStr = common.entry['index'];
+  if (entrys.file.html.index) {
+    _pageStr = entrys.file.html['index'];
   } else {
-    _pageStr = common.entry[entrys[0]];
+    _pageStr = entrys.file.html[Object.keys(entrys)[0]];
   }
 
-  _openPage = _pageStr.slice(_pageStr.indexOf('project')).replace(/\.js$/, '.html');
+  _openPage = _pageStr.slice(_pageStr.indexOf('project'));
 }
 
 var webpackDevConfig = merge(common, {
@@ -27,7 +26,6 @@ var webpackDevConfig = merge(common, {
   // 开启 source map,不可用于生产环境
   devtool: 'inline-source-map',
   module: {
-    // rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap, usePostCSS: true })
     rules: [
       {
         test: /\.css$/,
@@ -58,7 +56,7 @@ var webpackDevConfig = merge(common, {
     new webpack.HotModuleReplacementPlugin(),
     // 开发环境下的全局常量
     new webpack.DefinePlugin({
-      'process.env': config.dev.env
+      'process.env.NODE_ENV': config.dev.env
     })
   ],
   // 开发服务器

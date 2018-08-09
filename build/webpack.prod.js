@@ -1,7 +1,7 @@
 var webpack = require('webpack');
 var path = require('path');
 var utils = require('./utils');
-var config = require('./config');
+var config = require('../config');
 var merge = require('webpack-merge');
 var common = require('./webpack.common.js');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -30,10 +30,10 @@ var prod = merge(common, {
   devtool: config.build.productionSourceMap ? '#source-map' : false,
   plugins: [
     new CleanWebpackPlugin(['dist'], {
-      root: path.resolve(__dirname, '../'),  // 根目录
-      verbose: true,                         // 开启在控制台输出
-      dry: false,                            // 是否删除文件
-      exclude: []                            // 排除不删除的目录
+      root: path.resolve(__dirname, '../'), // 根目录
+      verbose: config.build.productionVerbose, // 开启在控制台输出
+      dry: false, // 是否删除文件
+      exclude: [] // 排除不删除的目录
     }),
     // 便于查看代码之间的依赖
     new webpack.NamedModulesPlugin(),

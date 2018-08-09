@@ -1,5 +1,5 @@
 var path = require('path');
-var _project = 'AccountTracking'; // 项目名
+var _project = 'ICBC'; // 项目名
 
 module.exports = {
   build: {
@@ -7,8 +7,9 @@ module.exports = {
     index: path.resolve(__dirname, '../dist/index.html'),
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/oa-jy/healthyConduct/', // 打包后的静态资源根路径
-    productionSourceMap: false,
+    assetsPublicPath: '../../', // 打包后的静态资源根路径, 打包给APP时路径为相对路径 ../../
+    productionSourceMap: false, // 是否启用 SourceMap
+    productionVerbose: true, // 是否在控制台输出
     productionGzip: true,
     productionGzipExtensions: ['js', 'css'],
     bundleAnalyzerReport: process.env.npm_config_report,

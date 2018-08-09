@@ -4,7 +4,7 @@
 
 var merge = require('webpack-merge');
 var utils = require('./utils');
-var config = require('./config');
+var config = require('../config');
 var common = require('./webpack.common.js');
 var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 

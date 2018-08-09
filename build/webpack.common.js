@@ -1,7 +1,8 @@
 var path = require('path');
 var utils = require('./utils');
-var config = require('./config');
+var config = require('../config');
 var entrys = require('./webpack.entry');
+var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var vueLoaderConfig = require('./vue-loader.conf');
 
@@ -18,8 +19,7 @@ if (Object.keys(entrys.file.js).length === 0) {
 }
 
 entrys.file.js['polyfille'] = 'babel-polyfill';
-// entrys.file.js['react'] = ['react', 'react-dom'];
-// entrys.file.js['antd'] = ['antd-mobile'];
+// entrys.file.js['vendor'] = ['react', 'react-dom', 'react-router', 'antd-mobile'];
 
 var commonConfig = {
   entry: entrys.file.js,
@@ -36,7 +36,9 @@ var commonConfig = {
       '@': resolve('src')
     }
   },
-  plugins: [],
+  plugins: [
+    new webpack.optimize.ModuleConcatenationPlugin()
+  ],
   module: {
     rules: [
       {
@@ -51,7 +53,7 @@ var commonConfig = {
         ]
       },
       // {
-      //   test: /\.(js|vue)$/,
+      //   test: /\.(js|vue|jsx)$/,
       //   loader: 'eslint-loader',
       //   enforce: 'pre',
       //   include: [resolve('src'), resolve('test')],
@@ -136,7 +138,7 @@ Object.keys(entrys.file.html).forEach(item => {
     new HtmlWebpackPlugin({
       filename: commonConfig.entry.default ? '../dist/project/default/default.html' : entrys.file.html[item].replace('src', 'dist'),
       template: entrys.file.html[item],
-      chunks: ['manifest', 'vendor', item],  // 引入的模块
+      chunks: ['vendor', item],  // 引入的模块
       excludeChunks: [],                     // 排除的模块
       showErrors: true,              // 是否将错误信息写在页面中,默认true.出错信息被 pre 标签包裹并添加在页面上
       inject: true,                  // 静态资源在body后插入 
