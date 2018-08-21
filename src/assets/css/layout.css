@@ -1,0 +1,130 @@
+/**
+ * 框架样式表
+ * CopyRight 2016 Mouse
+ */
+
+html {
+	outline: 0;
+	font-family: "Microsoft YaHei", Helvetica, Arial, sans-serif;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,
+p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,
+menu,nav,section {
+	margin: 0;
+	padding: 0;
+}
+
+html, body {
+	height: 100%;
+	-webkit-text-size-adjust: 100% !important;
+	-moz-text-size-adjust: 100% !important;
+}
+
+h1, h2, h3, h4, h5, h6, a, ins {
+	color: inherit;
+	font-family: inherit;
+	font-weight: inherit;
+}
+
+pre {
+	margin: .5em 0;
+	padding: .4em .6em;
+	border-radius: 4px;
+	background-color: rgb(249, 249, 212);
+	white-space: pre-wrap;
+	white-space: -moz-pre-wrap !important;
+	white-space: -o-pre-wrap;
+	white-space: -pre-wrap;
+	word-wrap: break-word;
+}
+
+ins, a {
+	text-decoration: none;
+	outline: none;
+}
+
+a:focus, a:hover {
+	outline: none;
+	text-decoration: none;
+	cursor: pointer
+}
+
+img {
+	vertical-align: middle;
+}
+
+.img-responsive {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+.img-circle {
+	border-radius: 50% !important;
+}
+
+.clearfix:before, .clearfix:after {
+	content: '';
+	display: table;
+}
+
+.clearfix:after {
+	clear: both;
+}
+
+.svg-icon {
+	display: inline-block;
+	width: inherit;
+	height: inherit;
+	fill: currentColor;
+	vertical-align: middle;
+}
+
+.root-box {
+	height: 100%;
+	position: relative;
+	z-index: 1;
+}
+
+.is-null-image {
+    display: block;
+    width: 60%;
+    margin: 15vw auto 0;
+}
+
+/* modal */
+.oa-modal .am-modal-content {
+    border-radius: 3vw;
+    padding-top: 0;
+}
+
+.oa-modal .am-modal-header {
+    background-image: url('../img/share/oa_share_img_modal_header_bg.png');
+    background-size: cover;
+    padding-top: 4vw;
+    padding-bottom: 4vw;
+}
+
+.oa-modal .am-modal-title {
+    color: #fff;
+}
+
+.oa-modal .am-modal-body {
+    color: #000;
+    font-weight: 400;
+    line-height: 1.2;
+    text-align: left;
+}
+
+.oa-modal .am-modal-body ul {
+    padding-left: 20px;
+}
+
+.oa-modal .am-modal-body * {
+    text-align: justify;
+    margin: 4px 0;
+}
