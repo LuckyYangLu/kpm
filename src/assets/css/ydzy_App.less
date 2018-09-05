@@ -1,0 +1,604 @@
+
+/*app*/
+
+
+/*标题栏栏*/
+
+#productInformationBg{
+  background-image: url("../img/ydzy_App/background.png");
+  background-size:100vw 160vw;
+  top: 0%;
+  left: 0%;
+}
+
+.title {
+  width: 60vw;
+  height: 4.26vw;
+  text-align: center;
+
+  font-size: 5vw;
+}
+
+.title{
+  border-top: 1vw #e6e6e6;
+  margin-bottom: 7vw;
+  height: 4.26vw;
+  width: 100vw;
+}
+/*ProductInfo*/
+.clear{
+  clear: both;
+
+}
+
+.rate{
+  float: left;
+}
+.rateNum{
+  font-size: 8.5vw;
+  color: rgb(229,76,87);
+}
+.rateDetail{
+  font-size: 4.6vw;
+  color: rgb(102,102,102);
+}
+
+.purchase{
+  float: right;
+}
+.purchaseNum{
+  font-size: 5.3vw;
+  color: rgb(51,51,51);
+  margin-left: -4.2vw;
+
+}
+.purchaseDetail{
+  font-size: 4.6vw;
+  color: rgb(102,102,102);
+  margin-top: 4vw;
+
+}
+
+.productInfo{
+  margin-left: 2vw;
+  margin-right: 2vw;
+  height: 15vw;//height
+
+}
+
+/*qr info*/
+
+.qrInfo{
+  width: 100vw;
+  height: 82vw;
+  border-top: 2vw solid rgb(248,248,248);
+  margin-left: -2vw;
+  border-bottom: 1vw solid rgb(248,248,248);
+
+}
+.qrCode{
+  width: 36vw;
+  height: 36vw;
+  margin-left: 32vw;
+  margin-top: 10vw;
+}
+
+.qrBanner{
+  width: 80vw;
+  height: 14vw;
+  margin-left: 10vw;
+  margin-top: 8vw;
+  margin-bottom: 11vw;
+}
+
+/*personInfo*/
+.personInfo{
+  width: 100%;
+  height: 44vm;
+
+}
+
+
+.header{
+  float: left;
+  margin-right: -4vw;
+}
+.information{
+  float: right;
+}
+
+#year,#month{
+  text-align: center;
+  margin-left: 4.5vw;
+}
+#month{
+  font-size: 3.7vw;
+}
+#year{
+  font-size: 3.4vw;
+}
+.header img{
+  width: 15vw;
+  height: 15vw;
+  margin-left: 2vw;
+  margin-top: 7vw;
+}
+
+
+.personInfo .information ul{
+  list-style: none
+}
+.personInfo .information ul li{
+  font-size: 3.6vw;
+  color:rgb(2,2,2);
+  margin-bottom: 2vw;
+}
+.personInfo .information ul li:first-child info{
+  font-size: 3.6vw;
+  color:rgb(72,153,252);
+}
+.personInfo .information ul li span{
+  display: inline-block;
+  color: rgb(153,153,153);
+  width:20vw;
+  font-size: 3.6vw;
+
+}
+#telephone {
+  width: 12vw!important;
+  height: 5.8vw!important;
+  display: inline-block;
+  margin-left: 4vw;
+  color: rgb(238,26,26)!important;
+  border: 0.1vw solid rgb(238,26,26);
+  border-radius: 2vw;
+  font-size: 3.6vw;
+  text-align: center;
+  padding-top: 1vw;
+}
+#weChat{
+  width: 12vw!important;
+  height: 5.8vw!important;
+  display: inline-block;
+  margin-left: 4vw;
+  color: rgb(238,26,26)!important;
+  border: 0.1vw solid rgb(238,26,26);
+  border-radius: 2vw;
+  font-size: 3.6vw;
+  text-align: center;
+  padding-top: 1vw;
+}
+
+#bottomMs{
+  width: 90%;
+  margin-left: 5vw;
+  font-size: 3.2vw;
+  color: rgb(153,153,153);
+}
+
+/*资讯中心*/
+/*div*/
+.infoCenter-listInfo{
+  width: 100vw;
+  height: auto;
+}
+.infoCenter-listItem{
+  width: 100vw;
+  height: auto;
+  background-color: white;
+  border-bottom: 0.3vw solid silver;
+  padding-top: 2vw;
+}
+.listLink{
+  display: block;
+  width: 100%;
+  text-align: left;
+  font-size: 4vw;
+  letter-spacing: 0.2vw;
+}
+
+
+.listLink:link{
+  color: rgb(3,3,3)!important;
+}
+
+
+
+div.infoCenter-listItem span{
+  margin-top: 1vw;
+  display: inline-block;
+  height: 1.5rem;
+  color: rgb(153,153,153);
+}
+
+/*填写服务记录*/
+.serviceRecords{
+  background-color: rgb(254,253,253);
+  height: 160vw;
+   width: 100%;
+  position: absolute;
+  top: 0%;
+  overflow-x:hidden;
+   ul li{
+    margin-top: 4vw;
+  }
+
+   ul{
+    list-style: none;
+    margin-left: 14.4vm;
+  }
+   li span{
+    display: inline-block;
+    font-size: 4vw;
+    color: rgb(51,51,51);
+
+  }
+   ul input[type="text"]{
+    display: inline-block;
+    margin-left: 4vw;
+    width: 64vw;
+    height: 8vw;
+    border: 0.3vw solid rgb(210,210,210);
+  }
+   ul input[type="text"]::-webkit-input-placeholder{
+    color: rgb(153,153,153);
+    font-size: 4vw;
+    padding-left: 2vw;
+  }
+   ul input[type='checkbox']{
+    display: inline-block;
+    width: 4.3vw;
+    height: 4vw;
+  }
+}
+.checkBoxName{
+  display: inline-block;
+  width: 16vw;
+  height: 2vw;
+  vertical-align:top;
+}
+.checkBoxItems{
+  display: inline-block;
+  margin-left: 4vw;
+  text-align:left;
+
+}
+.checkBoxItems span{
+  display: inline-block;
+  width: 16vw;
+  height: 4vw;
+  font-size: 4vw;
+  color: rgb(51,51,51);
+  vertical-align: top;
+  margin-left: 1vw;
+}
+.serviceRecords li:nth-of-type(4) span{
+  margin-left: -8vw!important;
+}
+
+.serviceRecords li:nth-of-type(5){
+  margin-left: 8vw;
+}
+.serviceRecords li:nth-of-type(5) span{
+  margin-right: 4vw!important;
+  vertical-align: top;
+}
+
+.serviceRecords ul li textarea{
+  display: inline-block;
+  width: 63vw;
+  height: 22vw;
+  border: 0.3vw solid rgb(210,210,210);
+}
+
+.serviceRecords ul textarea::-webkit-input-placeholder{
+  color: rgb(153,153,153);
+  font-size: 4vw;
+  padding-left: 2vw;
+}
+.serviceRecords li:nth-of-type(6){
+
+}
+.serviceRecords li:nth-of-type(6) span{
+  margin-right: 4vw!important;
+  vertical-align: top;
+}
+
+.buttons {
+  width: 90vw;
+  height: 8vw;
+  margin-top: 14vw;
+  margin-left: 10vw;
+}
+.serviceRecords button{
+  width: 40vw;
+  height: 8vw;
+  margin-right: 5vw;
+}
+.serviceRecords button:nth-of-type(1){
+  background: radial-gradient(rgb(237,105,90), rgb(237,112,81), rgb(242,111,116));
+  border-radius:2vw;
+  border: 0.1vw solid rgb(242,111,116);
+  color: rgb(254,252,252);
+  font-size: 4vw;
+}
+.serviceRecords button:nth-of-type(2){
+  background: radial-gradient(rgb(240,164,78), rgb(240,186,64), rgb(240,186,64));
+  border-radius:2vw;
+  border: 0.1vw solid rgb(240,186,64);
+  color: rgb(254,252,252);
+  font-size: 4vw;
+}
+/*按钮*/
+.serviceRecords .am-list-thumb{
+  display: inline-block!important;
+  width: 3vw!important;
+  height: 5vw!important;
+  margin-right: 3vw;
+
+}
+.serviceRecords .am-checkbox{
+  display: inline-block!important;
+  width: 5vw!important;
+  height: 5vw!important;
+
+}
+.serviceRecords .am-checkbox-inner {
+  display: inline-block!important;
+  width: 5vw!important;
+  height: 5vw!important;
+  border-radius: 0%!important;
+
+}
+/*标签内容*/
+
+.serviceRecords  .am-list-content{
+  display: inline-block!important;
+  width: 5vw!important;
+  height: 5vw!important;
+  font-size: 4vw;
+
+}
+.serviceRecords .am-list-item{
+  float: left;
+  width: 50vw!important;
+  height: 10vw!important;
+  margin-left: -33vw!important;
+  background-color: transparent!important;
+  border-bottom: 1px solid rgb(254,253,253)!important;
+
+}
+
+.serviceRecords li:nth-of-type(2){
+  position: relative;
+}
+.serviceRecords .checkBoxItems{
+    position: absolute;
+    width: 67vw;
+    height: auto;
+    margin-top: -3vw;
+    margin-left: 32vw;
+
+}
+.serviceRecords li:nth-of-type(3){
+  margin-top: 20vw;
+}
+
+/*HistoricalServiceRecords 历史服务记录*/
+.hisSerRecords{
+  margin-top: -3vw;
+  width: 100vw;
+  height: auto;
+  background-color: rgb(254,253,253);
+   /*基础组件标签样式*/
+   ul{
+    list-style: none;
+    li{
+      width: 90vw;
+      height: 22vw;
+      margin-left: -8vw;
+      padding-top: 4vw;
+      border-bottom:0.5vw solid rgb(229,229,229);
+    }
+  }
+  .hisContent{
+    height: 4vw;
+    color: rgb(3,3,3);
+    font-size: 4vw;
+    line-height:3.2vw;
+    letter-spacing:0.2vw;
+    padding-left: 3vw;
+    margin-bottom: 4vw;
+    border-left: 0.8vw solid rgb(191,43,34);
+  }
+  .hisEmployee{
+    height: 3.5vw;
+    color: rgb(51,51,51);
+    font-size: 3.5vw;
+    line-height:3.2vw;
+    letter-spacing:0.2vw;
+    padding-left: 3vw;
+    margin-bottom: 3vw;
+  }
+  .hisCommon{
+    height: 2.7vw;
+    padding-left: 3vw;
+    .hisTime{
+      display: inline-block;
+      heigth: 2.7vw;
+      color:rgb(153,153,153);
+      font-size: 3.5vw;
+      line-height:3.2vw;
+      letter-spacing:0.2vw;
+    }
+    .hisTip{
+      display: inline-block;
+      heigth: 2.7vw;
+      color: rgb(236,139,51);
+      font-size: 3.5vw;
+      line-height:3.2vw;
+      letter-spacing:0.2vw;
+      right: 0vw;
+      float: right;
+    }
+
+  }
+  /*HistoricalServiceRecords悬浮窗*/
+  .historyDialog{
+    width: 80vw;
+    height: 95vw;
+    background-image: url("../img/ydzy_App/historyBackground.png");
+    background-size:80vw 95vw;
+
+    position: fixed;
+    z-index: 999;
+    left: 0%;
+    top: 0%;
+    margin-top: 23vw;
+    margin-left: 10vw;
+
+    span{
+      display: inline-block;
+      margin-bottom: 1vw;
+      font-size: 3.7vw;
+      line-height: 4vw;
+      letter-spacing: 0.2vw;
+      color: rgb(78,53,28);
+    }
+
+    div{
+      width: 80vw;
+      padding-left: 8vw;
+      margin-top: 4vw;
+      input{
+        display: inline-block;
+        width: 64vw;
+        height: 7.5vw;
+        border: 0.3vw solid rgb(210,210,210);
+      }
+      input::-webkit-input-placeholder{
+        color: rgb(153,153,153);
+        font-size: 3.7vw;
+        padding-left: 2vw;
+      }
+      input.timeFrom,input.timeTo{
+        display: inline-block;
+        width: 29vw;
+        height: 7.5vw;
+      }
+      input.timeFrom::-webkit-input-placeholder,input.timeTo::-webkit-input-placeholder{
+        text-align: center;
+      }
+    }
+
+    .fromTo{
+      display: inline-block;
+      width: 2vw;
+      height: 7.5vw;
+      margin-left: 1vw;
+      margin-right: 3vw;
+    }
+
+    .confirmButton{
+      width: 60vw;
+      height: 7.5vw;
+      margin-left: 10vw;
+      font-size: 4.0vw;
+      line-height: 3.2vw;
+      letter-spacing:0.2vw ;
+      color: rgb(254,252,252);
+      background: radial-gradient(rgb(237,105,90), rgb(237,112,81), rgb(242,111,116));
+      border-radius:2vw;
+      border: 0.1vw solid rgb(242,111,116);
+    }
+
+    .cancelButton{
+      display: inline-block;
+      width: 7vw;
+      height: 7vw;
+      margin-left: 36.5vw;
+      margin-top: 15vw;
+    }
+
+
+  }
+  /*HistoricalServiceRecords悬浮按钮*/
+  .historyDialogButton{
+    width:11vw;
+    height: 11vw;
+    position: fixed;
+    z-index: 99;
+    right: 0%;
+    bottom: 15%;
+    margin-right: 7vw;
+
+  }
+  /*灰色遮罩层*/
+  .mask{
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 99;
+  }
+
+}
+
+
+/*InformationDetail 咨询详情*/
+.informationDetail{
+  height: auto;
+  background-color: rgb(247,247,247);
+  padding-top: 2vw;
+  padding-left: 4vw;
+  border: 0.1vw solid rgb(220,220,220);
+
+  .informationDetailTitle{
+    display: inline-block;
+    width: 95vw;
+    height: auto;
+    font-size: 5.9vw;
+    line-height:9vw;
+    letter-spacing: 0.3vw;
+    color: rgb(3,3,3);
+    text-align:left;
+    margin-bottom: 3vw;
+
+  }
+
+  .informationSource{
+    display: inline-block;
+    width: 17.9vw;
+    height: 3.5vw;
+    font-size: 3.5vw;
+    line-height: 3.2vw;
+    letter-spacing: 0.3vw;
+    color: rgb(51,51,51);
+
+  }
+
+  .informationDate{
+    display: inline-block;
+    width: 23vw;
+    height: 2.7vw;
+    font-size: 3.5vw;
+    line-height: 3.2vw;
+    letter-spacing: 0.3vw;
+    color: rgb(153,153,153);
+    margin-left: 4.3vw;
+  }
+
+  p{
+    width: 90vw;
+    text-indent: 2em;
+    font-size: 4.3vw;
+    line-height: 5.9vw;
+    color: rgb(51,51,51);
+    margin-left: 3vw;
+  }
+
+
+}
+

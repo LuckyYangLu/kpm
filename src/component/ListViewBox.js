@@ -86,8 +86,8 @@ export default class ListViewBox extends React.Component {
           )}
           onEndReached={this.onEndReached}
           pullToRefresh={<PullToRefresh
-            refreshing={this.state.refreshing}
-            onRefresh={this.onRefresh}
+          refreshing={this.state.refreshing}
+          onRefresh={this.onRefresh}
           />}
           style={this.props.style}
           initialListSize={this.props.initialListSize}

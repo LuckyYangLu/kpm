@@ -1,0 +1,645 @@
+/*app*/
+
+/*导航栏*/
+#nav li{
+  float: left;
+  width: 20vw;
+  height: auto;
+  margin-left:10vw;
+  margin-bottom: -1vw;
+}
+#nav{
+  border-bottom: 1vw solid #EFF0F4;
+}
+
+/*填充栏*/
+.block {
+  background-color: #EFF0F4 ;
+  width: auto;
+  height: 2vw;
+}
+
+
+
+
+/*rankingTop*/
+#bgImg{
+  margin-top: 1vw;
+  width: 100vw;
+  height: 80vw;
+  background-image: url("../asset/month-banner.jpg");
+  background-size:100vw 100vw;
+  position: relative;
+}
+
+#rule{
+  width:8.5vw;
+  height:15vw;
+  top: 0%;
+  left: 90%;
+  position: absolute;
+}
+/*第二名*/
+#second{
+  top:47%;
+  left:6vw;
+  position: absolute;
+}
+#second ul{
+  list-style: none;
+  border: solid #f8f8f8 ;
+  background-color: #f8f8f8;
+  border-radius: 1.4vw;
+  width: 25vw;
+  height: 40vw;
+
+  left:1.3vw;
+  position: absolute;
+
+}
+#number2{
+  top:0vw;
+  left: 0vw;
+  width: 25vw;
+  height: 10.8vw;
+  margin-top:-8vw;
+  position: absolute;
+
+}
+.header{
+  left: 0vw;
+  width: 13vw;
+  height: 13vw;
+  margin-top: 2vw;
+  margin-left: 6.5vw;
+  position: absolute;
+}
+
+
+
+#nameTop2,#departTop2,#scoreTop2{
+  top:16vw;
+  left: 5.6vw;
+  position: absolute;
+  text-align: center;
+  font-size:3.2vw;
+  width: 14vw;
+
+
+}
+#departTop2{
+   top:22.6vw;
+   font-size:2vw;
+
+ }
+#scoreTop2{
+  top:29.3vw;
+  font-size:3.4vw;
+  color: #FBAC11;
+}
+
+/*第一名*/
+#first {
+  top: 42%;
+  left: 37.3vw;
+  position: absolute;
+}
+
+#first ul{
+  list-style: none;
+  border: solid #f8f8f8 ;
+  background-color: #f8f8f8;
+  border-radius:  1.4vw;
+  width: 25vw;
+  height: 40vw;
+  top:40%;
+  left:1.3vw;
+  position: absolute;
+}
+
+#number1{
+  top:0vw;
+  left: 0vw;
+  width: 25vw;
+  height: 10.8vw;
+  margin-top:-8vw;
+  position: absolute;
+
+}
+
+#nameTop1,#departTop1,#scoreTop1{
+  top:16vw;
+  left: 5.6vw;
+  position: absolute;
+  text-align: center;
+  font-size:3.2vw;
+  width: 14vw;
+
+
+}
+#departTop1{
+  top:22.6vw;
+  font-size:2vw;
+
+}
+#scoreTop1{
+  top:29.3vw;
+  font-size:3.4vw;
+  color: #FBAC11;
+}
+/*第三名*/
+#third {
+  top: 47%;
+  left: 68.6vw;
+  position: absolute;
+}
+
+#third ul{
+  list-style: none;
+  border: solid #f8f8f8 ;
+  background-color: #f8f8f8;
+  border-radius:  1.4vw;
+  width: 25vw;
+  height: 40vw;
+  top:40%;
+  left:1.3vw;
+  position: absolute;
+}
+
+#number3{
+  top:0vw;
+  left: 0vw;
+  width: 25vw;
+  height: 10.8vw;
+  margin-top:-8vw;
+  position: absolute;
+
+}
+
+#nameTop3,#departTop3,#scoreTop3{
+  top:16vw;
+  left: 5.6vw;
+  position: absolute;
+  text-align: center;
+  font-size:3.2vw;
+  width: 14vw;
+
+
+}
+#departTop3{
+  top:22.6vw;
+  font-size:2vw;
+
+}
+#scoreTop3{
+  top:29.3vw;
+  font-size:3.4vw;
+  color: #FBAC11;
+}
+
+/*rankingInfo*/
+
+#rankingInfo ul {
+
+  list-style: none;
+}
+#rankingInfo{
+  position: relative;
+}
+#rankingInfo ul li img{
+  margin-right: 1.3vw;
+}
+
+#rangkingInfoScore{
+  float: left;
+  margin-left: -2vw;
+}
+
+#rangkingInfoNum{
+  float: right;
+  margin-right: 3vw;
+}
+#rangkingInfoScore img,#rangkingInfoNum img{
+  width: 5.7vw;
+  height: 6vw;
+}
+#rankingInfo ul li span{
+  color: #36B0F4;
+  font-size: 3vw;
+
+
+}
+#banner{
+  background-image: url("../asset/red-banner.png");
+  width: 85vw;
+  height: 15.2vw;
+  background-size:85vw 15.3vw;
+  position: absolute;
+  top:8vw;
+  left: 8vw;
+  align-content: center;
+
+}
+
+#info{
+  font-size: 3vw;
+  color: #FFFFFF;
+  margin-left: 20vw;
+  top: 2vw;
+  position: absolute;
+}
+/*rankingList*/
+#rankingList{
+  width: 100vw;
+  margin-top:22vw;
+  position: absolute;
+  border-top: 2vw solid #EFF0F4;
+}
+#rankingList ul{
+  list-style: none;
+  width: 100%;
+
+}
+.clear{
+  clear: both;
+}
+
+#rankingList li{
+  border-bottom:solid whitesmoke;
+  border-top: white;
+  width: 90%;
+  height:20%;
+
+
+}
+
+.listId,.listInfo{
+  float: left;
+  margin-left: 0vw;
+  margin-right: 0vw;
+  font-size: 3vw;
+  color: black;
+}
+
+.listId{
+  margin-top: 2vw;
+  width: 4vw;
+}
+.listDepart{
+  color: #9B9B9B;
+}
+.listScore{
+  margin-top: 2vw;
+  margin-right: 3.33vw;
+  float: right;
+  color: #FBAC11;
+  font-size: 4.5vw;
+}
+
+/*
+
+
+
+
+
+*/
+
+
+
+
+
+/*团体赛*/
+/*Switch Bar*/
+
+.bg{
+  background-color: #EFF0F4;
+  width: 30vw;
+  height: 10vw;
+}
+
+#switchBar{
+  margin-left: 35vw;
+}
+#individual,#group{
+  float: left;
+  margin-top: 2vw;
+  font-size: 4vw;
+  width: 15vw;
+  border: 1px solid #31BFFD;
+  color: #31BFFD;
+}
+
+
+#individual{
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
+  text-align:center
+}
+
+#group{
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 20px;
+  text-align:center
+}
+
+#switchBar span a {
+  display:block;
+  width: 100%;
+  text-decoration:none;
+}
+#switchBar span a {
+  display:block;
+  width: 100%;
+
+}
+#activeLeft,#activeLeft:hover{
+  background-color:#31BFFD;
+  color: white;
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
+
+}
+
+#activeRight,#activeRight:hover{
+  background-color:#31BFFD;
+  color: white;
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 20px;
+
+}
+
+#noactive,#noactive:hover{
+  color: #31BFFD;
+}
+/*personRankingList*/
+
+#personRankingList{
+  width: 100vw;
+  margin-top:12vw;
+
+
+
+}
+#personRankingList ul{
+  list-style: none;
+  margin-left: -10vw;
+
+
+}
+.personClear{
+  clear: both;
+}
+
+#personRankingList li{
+  border:solid whitesmoke;
+
+}
+
+.peronListId,.personListInfo{
+  float: left;
+  margin-left: 16vw;
+  margin-right: 20vw;
+  font-size: 4vw;
+  color: black;
+}
+
+.personListId{
+  position:absolute;
+  margin-top:2.6vw ;
+  margin-left: 4vw;
+  width: 6.4vw;
+  height: 6.4vw;
+  font-size: 20px;
+}
+.personListDepart{
+  color: #9B9B9B;
+}
+.personListScore{
+  margin-top: 2vw;
+  margin-right: 3.3vw;
+  float: right;
+  color: #FBAC11;
+  font-size: 3vw;
+}
+
+.rankingPng{
+  position: absolute;
+  margin-top: 1vw;
+  margin-left: -1.5vw;
+  width: 6.4vw;
+  height: 6.4vw;
+}
+/*PersonRankingInfo*/
+#personRankingInfo{
+  margin-top: 20vw;
+  border-top: 2vw solid #EFF0F4;
+}
+
+#personRankingInfo ul {
+  list-style: none;
+}
+#personRankingInfo{
+  position: relative;
+}
+#personRankingInfo ul li img{
+  margin-right: 1.3vw;
+}
+
+#personRangkingInfoScore{
+  float: left;
+  margin-left: -2vw;
+}
+#personRangkingInfoNum{
+  float: right;
+  margin-right: 3vw;
+}
+#personRangkingInfoScore img,#personRangkingInfoNum img{
+  width: 5.7vw;
+  height: 6vw;
+}
+#personRankingInfo ul li span{
+  color: #36B0F4;
+  font-size: 3vw;
+
+}
+#personBanner{
+  background-image: url("../asset/yellow-banner.png");
+  width: 85vw;
+  height: 15.2vw;
+  background-size:85vw 15.3vw;
+  position: absolute;
+  top:8vw;
+  left: 8vw;
+  align-content: center;
+}
+
+#personInfo{
+  font-size: 3vw;
+  color: #FFFFFF;
+  margin-left: 20vw;
+  top: 2vw;
+  position: absolute;
+}
+/*
+
+
+*/
+/*团体赛*/
+/*groupRankingList*/
+#groupRankingList{
+  width: 100vw;
+}
+#groupBanner{
+  width: 60vw;
+  height: 7.5vw;
+  margin-left: 20vw;
+  margin-top: -4vw;
+
+}
+#groupBack{
+  margin-top: 10vw;
+  width: 100vw;
+  height: 6vw;
+  background-color: #EFF0F4;
+}
+
+#groupRankingList{
+  width: 100vw;
+  margin-top:12vw;
+
+
+
+}
+#groupRankingList ul{
+  list-style: none;
+  margin-left: -10vw;
+
+
+}
+.groupClear{
+  clear: both;
+}
+
+#groupRankingList li{
+  border:solid whitesmoke;
+  height: 10vw;
+
+}
+
+.groupListId{
+  float: left;
+  margin-top:2vw ;
+  margin-left: 4vw;
+  margin-right: 20vw;
+  font-size: 4vw;
+  color: black;
+  position:absolute;
+  width: 6.4vw;
+  height: 6.4vw;
+
+}
+.groupListDepart{
+  float: left;
+  margin-left: 16vw;
+  margin-right: 20vw;
+  margin-top: 2.7vw;
+  font-size: 4vw;
+  color: black;
+}
+.grankingPng{
+  position: absolute;
+  margin-top: 0vw;
+  margin-left: -1.5vw;
+  width: 6.4vw;
+  height: 6.4vw;
+}
+
+.groupListScore{
+  margin-top: 3vw;
+  margin-right: 3.3vw;
+  float: right;
+  color: #FBAC11;
+  font-size: 3vw;
+}
+
+/*GroupRankingInfo*/
+#groupRankingInfo{
+  border-top: 2vw solid #EFF0F4;
+}
+
+#groupRankingInfo ul {
+  list-style: none;
+  margin-left: -5vw;
+}
+
+#groupRankingInfo{
+  position: relative;
+}
+#groupRankingInfo ul li img{
+  margin-right: 1.3vw;
+}
+
+#groupRangkingInfo ul li{
+  left: 0vw;
+  font-size: 4vw;
+
+
+}
+#groupRangkingInfoScore{
+  border-bottom:0.1vw silver dashed;
+  margin-top: 2vw;
+  padding-bottom: 2vw;
+
+
+}
+#groupRangkingInfoNum{
+  margin-top: 2vw;
+}
+#groupRangkingInfoScore img,#groupRangkingInfoNum img{
+  width: 5.7vw;
+  height: 6vw;
+
+}
+#groupRankingInfo ul li span{
+  color: #36B0F4;
+  font-size: 4vw;
+
+}
+
+#groupBannerBottom{
+  background-image: url("../asset/yellow-banner.png");
+  width: 85vw;
+  height: 15.2vw;
+  background-size:85vw 15.3vw;
+  position: absolute;
+  top:20vw;
+  left: 8vw;
+  align-content: center;
+}
+
+#groupInfo{
+  font-size: 4vw;
+  color: #FFFFFF;
+  margin-left: 18vw;
+  display: inline-block;
+  text-align: center;
+  top: 2vw;
+  position: absolute;
+}
+
+/*NoRanking*/
+#noRankingBanner{
+  width: 50vw;
+  height: 50vw;
+  margin-left: 25vw;
+  margin-top: 25vw;
+}
+#noRankingInfo{
+  margin-top: 2vw;
+}
+#noRankingInfo span{
+  margin-left: 38vw;
+  color: #e6e6e6;
+  font-size: 4vw;
+
+}
