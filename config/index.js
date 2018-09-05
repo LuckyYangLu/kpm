@@ -26,6 +26,7 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {},
+    useEslint: true,
     cssSourceMap: false
   }
 };

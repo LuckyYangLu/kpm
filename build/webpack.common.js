@@ -21,6 +21,17 @@ if (Object.keys(entrys.file.js).length === 0) {
 entrys.file.js['polyfille'] = 'babel-polyfill';
 // entrys.file.js['vendor'] = ['react', 'react-dom', 'react-router', 'antd-mobile'];
 
+const createLintingRule = () => ({
+  test: /\.(js|vue|jsx)$/,
+  loader: 'eslint-loader',
+  enforce: 'pre',
+  include: [resolve('src'), resolve('test')],
+  options: {
+    formatter: require('eslint-friendly-formatter'),
+    emitWarning: !config.dev.showEslintErrorsInOverlay
+  }
+});
+
 var commonConfig = {
   entry: entrys.file.js,
   output: {
@@ -41,6 +52,7 @@ var commonConfig = {
   ],
   module: {
     rules: [
+      ...(config.dev.useEslint ? [createLintingRule()] : []),
       {
         test: /\.(html|htm)$/i,
         use: [
@@ -52,22 +64,10 @@ var commonConfig = {
           }
         ]
       },
-      // {
-      //   test: /\.(js|vue|jsx)$/,
-      //   loader: 'eslint-loader',
-      //   enforce: 'pre',
-      //   include: [resolve('src'), resolve('test')],
-      //   options: {
-      //     formatter: require('eslint-friendly-formatter'),
-      //     emitWarning: !config.dev.showEslintErrorsInOverlay
-      //   }
-      // },
       {
         test : /\.js$/,
         exclude: /node_modules/,
-        // include: [
-        //   path.resolve(__dirname, 'node_modules/webpack-dev-server')
-        // ],
+        include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')],
         use: {
           loader: 'babel-loader',
           options: {
@@ -141,7 +141,7 @@ Object.keys(entrys.file.html).forEach(item => {
       chunks: ['vendor', item],  // 引入的模块
       excludeChunks: [],                     // 排除的模块
       showErrors: true,              // 是否将错误信息写在页面中,默认true.出错信息被 pre 标签包裹并添加在页面上
-      inject: true,                  // 静态资源在body后插入 
+      inject: true,                  // 静态资源在body后插入
       favicon: path.resolve(__dirname, '../src/assets/favicon.ico'),
       minify: {
         caseSensitive: false,        // 是否大小写敏感

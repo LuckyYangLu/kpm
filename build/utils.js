@@ -1,6 +1,7 @@
 var path = require('path');
 var config = require('../config');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var postCssOptions = require('../postcss.config');
 
 exports.assetsPath = function (_path) {
   var assetsSubDirectory = process.env.NODE_ENV === 'production'
@@ -12,41 +13,28 @@ exports.assetsPath = function (_path) {
 exports.cssLoaders = function (options) {
   options = options || {};
 
-  var styleLoader = {
+  const styleLoader = {
     loader: 'style-loader',
     options: {
       sourceMap: options.sourceMap
     }
-  };
+  }
 
   var cssLoader = {
     loader: 'css-loader',
     options: {
-      minimize: true,                  // 开启css压缩
+      minimize: true, // 开启css压缩
       sourceMap: options.sourceMap
     }
   };
 
   var postcssLoader = {
-    loader: 'postcss-loader',
-    options: {
-      // sourceMap: options.sourceMap,
-      // parser: '', // postcss分析器
-      // exec: true, // 使postcss解析器支持CSS-in-JS
-      // path: 'postcss.config.js',
-      // cssnext: true,
-      // autoprefixer: true
-    }
+    loader: 'postcss-loader'
   }
 
   // generate loader string to be used with extract text plugin
   function generateLoaders (loader, loaderOptions) {
-    var loaders = [cssLoader];
-
-    // 开发环境下css需要style-loader处理
-    // process.env.NODE_ENV === 'development' && loaders.unshift(styleLoader);
-    // loader.unshift(styleLoader);
-    options.usePostCSS ? loaders.push(postcssLoader) : '';
+    const loaders = options.usePostCSS ? [styleLoader, cssLoader, postcssLoader] : [styleLoader, cssLoader]
 
     if (loader) {
       loaders.push({
@@ -60,6 +48,7 @@ exports.cssLoaders = function (options) {
     // 抽取样式为独立的css文件,避免将样式打入js文件中
     if (options.extract) {
       return ExtractTextPlugin.extract({
+        fallback: 'style-loader',
         use: loaders
       });
     } else {
@@ -78,7 +67,6 @@ exports.cssLoaders = function (options) {
   };
 };
 
-// Generate loaders for standalone style files (outside of .vue)
 exports.styleLoaders = function (options) {
   var output = [];
   var loaders = exports.cssLoaders(options);
