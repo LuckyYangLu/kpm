@@ -11,7 +11,7 @@ function readFileList (rootPath, filesList) {
     return console.error('请输入正确的项目名！');
   }
 
-  files.map(function (itm, index) {
+  files.map(function (itm) {
     try {
       var stat = fs.statSync(`${rootPath}${limit}${itm}`);
     } catch (err) {
@@ -20,11 +20,11 @@ function readFileList (rootPath, filesList) {
 
     // 如果是目录
     if (stat.isDirectory()) {
-      if (!/(component|fetch|router|store|utils|plugin|config)/i.test(itm)) {
+      if (!/(component|assets|fetch|router|store|utils|plugin|config)/i.test(itm)) {
         // 递归读取文件
         readFileList(`${rootPath}${limit}${itm}${limit}`, filesList);
       }
-    } else {  
+    } else {
       if (/\.js$/.test(itm)) {
         filesList['js'][itm.replace(/\.js$/, '')] = rootPath + limit + itm;
       } else if (/\.(html|htm)$/.test(itm)) {

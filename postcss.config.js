@@ -3,20 +3,30 @@
  */
 
 module.exports = {
-//   parser: file.extname === '.sss' ? 'sugarss' : false,
-//   plugins: {
-//     'postcss-import': { root: file.dirname },
-//     'postcss-cssnext': options.cssnext ? options.cssnext : false,
-//     'autoprefixer': env === 'production' ? options.autoprefixer : false,
-//     'cssnano': env === 'production' ? options.cssnano : false
-//   }
-// parser: 'sugarss',
-  plugins: {
-    'postcss-import': {},
-    'postcss-cssnext': {},
-    // 'postcss-url': {},
-    // to edit target browsers: use "browserslist" field in package.json
-    // "autoprefixer": {}
-    // 'cssnano': {}
+  "plugins": {
+    "postcss-import": {},
+    "postcss-url": {},
+    "postcss-aspect-ratio-mini": {},
+    "postcss-write-svg": {
+      "utf8": false
+    },
+    "postcss-cssnext": {},
+    "postcss-px-to-viewport": {
+      "viewportWidth": 750,
+      "viewportHeight": 1334,
+      "unitPrecision": 3,
+      "viewportUnit": "vw",
+      "selectorBlackList": [
+        ".ignore",
+        ".hairlines"
+      ],
+      "minPixelValue": 1,
+      "mediaQuery": false
+    },
+    "cssnano": {
+      // "preset": "advanced",
+      "autoprefixer": false,
+      "postcss-zindex": false
+    }
   }
 };

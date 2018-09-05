@@ -1,6 +1,7 @@
 var webpack = require('webpack');
 var merge = require('webpack-merge');
 var config = require('../config');
+var utils = require('./utils');
 var entrys = require('./webpack.entry');
 var common = require('./webpack.common.js');
 
@@ -26,38 +27,19 @@ var webpackDevConfig = merge(common, {
   // 开启 source map,不可用于生产环境
   devtool: 'inline-source-map',
   module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: [
-          {loader: 'style-loader'},
-          {loader: 'css-loader'}
-        ]
-      },
-      {
-        test: /\.less$/,
-        use: [
-          {loader: 'style-loader'},
-          {loader: 'css-loader'},
-          {
-            loader: 'less-loader',
-            options: {
-              strictMath: true,
-              noIeCompat: true
-            }
-          }
-        ]
-      }
-    ]
+    rules: utils.styleLoaders({
+      sourceMap: config.dev.cssSourceMap,
+      usePostCSS: true // 开启postCss
+    })
   },
   // 插件
   plugins: [
-    // 模块热替换
-    new webpack.HotModuleReplacementPlugin(),
     // 开发环境下的全局常量
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': config.dev.env
-    })
+    }),
+    // 模块热替换
+    new webpack.HotModuleReplacementPlugin()
   ],
   // 开发服务器
   devServer: {

@@ -1,5 +1,5 @@
 var path = require('path');
-var _project = 'ICBC'; // 项目名
+var _project = 'ydzyApp'; // 项目名
 
 module.exports = {
   build: {
@@ -26,6 +26,7 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {},
+    useEslint: true,
     cssSourceMap: false
   }
 };

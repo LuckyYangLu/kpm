@@ -1,47 +1,38 @@
-// http://eslint.org/docs/user-guide/configuring
-
 module.exports = {
-  root: true,
-  parser: 'babel-eslint',
-  env: {
-    browser: true,
-    es6: true,
-    node: true,
-    commonjs: true
+  'env': {
+    'browser': true,
+    'commonjs': true,
+    'es6': true
   },
-  parserOptions: {
-    sourceType: 'module',
-    ecmaFeatures: {
-      experimentalObjectRestSpread: true,
-      jsx: true,
-      arrowFunctions: true,
-      classes: true,
-      modules: true,
-      defaultParams: true
-    }
-  },
-  extends: [
-    'standard',
-    "eslint:recommended",
-    "plugin:react/recommended"
+  'extends': [
+    'eslint:recommended',
+    'plugin:react/recommended'
   ],
-  plugins: ['html', 'react'],
-  // 自定义规则
-  rules: {
-    // allow paren-less arrow functions
-    'arrow-parens': 0,
-    // allow async-await
-    'generator-star-spacing': 0,
-    // 语句强制分号结尾
-    "semi": [2, "always"],
-    "no-console": 0,
-    // 开启定义必须使用
-    "no-unused-vars": 0,
-    // 关闭react中的定义错误
-    "react/jsx-uses-react": "error",
-    "react/jsx-uses-vars": "error",
-    'react/no-find-dom-node': 'error',
-    // allow debugger during development
-    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
+  "parser": "babel-eslint",
+  'parserOptions': {
+    'ecmaFeatures': {
+      'jsx': true
+    },
+    'ecmaVersion': 7,
+    'sourceType': 'module'
+  },
+  'plugins': [
+    'react'
+  ],
+  'rules': {
+    'no-console': 'off', // 不禁用console
+    'no-debugger': 1, // 不禁用debugger
+    'no-var': 1, // 禁用 var
+    'no-alert': 2, // 禁止 alert
+    'no-irregular-whitespace': 0, // 不规则的空白不允许
+    'no-mixed-spaces-and-tabs': 0, // 禁止混用tab和空格
+    'camelcase': 0, // 强制驼峰法命名
+    "comma-dangle": 2, // 对象字面量项尾不能有逗号
+    'indent': ['error', 2],
+    'linebreak-style': ['error', 'windows'],
+    'quotes': ['error', 'single'],
+    'semi': ['error', 'always'],
+    'react/forbid-prop-types': [2, {'forbid': ['any']}], // 禁止某些propTypes
+    'react/prop-types': 0, // 防止在React组件定义中丢失props验证
   }
-}
+};
